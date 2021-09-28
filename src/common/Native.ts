@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import { executable } from "./decorator";
 interface ShareConfig {
   /** 分享标题 */
@@ -20,16 +21,45 @@ class Native {
     ZWY_CLOUD.appCloseWeb({ type: 0 });
   }
 
+  /**
+   *
+   * @param tel 隐藏APP底部
+   */
+  @executable()
+  bottomBarConfig() {
+    ZWY_CLOUD.bottomBarConfig({
+      isShowBottom: 0,
+      callBack_replyList: "",
+      praiseNum: 0,
+      isPraised: 0
+    });
+  }
+  /**
+   *
+   * @param tel 隐藏APP顶部
+   */
+  @executable()
+  topBarConfig() {
+    ZWY_CLOUD.topBarConfig({
+      isShowTop: 0,
+      isShowBackBtn: 0,
+      isShowTitle: "",
+      isShowMoreBtn: "0"
+    });
+  }
+
   /** 获取token */
   @executable({
-    token: "2c699d5e6d85473e80660afb7847af11",
+    token: "025becc8a6474aa58a1de98d14a0e766",
     sessionId: "fd028b66dffe47b680d9f319c91c13cb",
     phone: "13399844444"
   })
-  goToken(): Promise<{ token: string; sessionId: string; phone: string }> {
+  goToken(
+    loginType: number
+  ): Promise<{ token: string; sessionId: string; phone: string }> {
     const result = this.callBack("tokenBack");
     ZWY_CLOUD.appSessionToken({
-      loginType: 1,
+      loginType: loginType,
       callback: "tokenBack"
     });
     return result;
@@ -39,7 +69,7 @@ class Native {
    * 获取用户登录信息
    */
   @executable({
-    token: "35a21e130b24444095299815b55bd80a",
+    token: "025becc8a6474aa58a1de98d14a0e766",
     sessionId: "fd028b66dffe47b680d9f319c91c13cb",
     phone: "13399844444"
   })

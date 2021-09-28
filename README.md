@@ -1,3 +1,3 @@
-# news-detail-pages
+# vue-ts-framework
 
-新闻详情页【多个区县共用，包含多种类型新闻详情页】
+vue+ts基础脚手架 及一些有用的公共方法

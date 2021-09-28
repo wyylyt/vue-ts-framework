@@ -1,195 +1,192 @@
 interface vicArray {
-  /**图片地址 */
+  /** 图片地址 */
   imgUrl: string;
 
-  /**图片描述 */
+  /** 图片描述 */
   desc: string;
 }
 
-/**文件上传（新）方法   图片参数 */
+/** 文件上传（新）方法   图片参数 */
 
 interface fuImage {
-  /**图片KB大小  单张图片 */
+  /** 图片KB大小  单张图片 */
   size: number;
 
-  /**图片数量 */
+  /** 图片数量 */
   num: number;
 
-  /**图片裁剪配置*/
+  /** 图片裁剪配置*/
   cfg: fuImageCfg;
 }
 
-/**文件上传（新）方法   图片参数  图片裁剪配置*/
+/** 文件上传（新）方法   图片参数  图片裁剪配置*/
 
 interface fuImageCfg {
-  /**是否裁剪*/
+  /** 是否裁剪*/
   isCut: boolean;
 
-  /**裁剪后宽度 isCut为true时生效*/
+  /** 裁剪后宽度 isCut为true时生效*/
   thumbWidth?: number;
 
-  /**裁剪后高度 isCut为true时生效*/
+  /** 裁剪后高度 isCut为true时生效*/
   thumbHeight?: number;
 }
 
-/**文件上传（新）方法   视频参数 */
+/** 文件上传（新）方法   视频参数 */
 
 interface fuVideo {
-  /**时长   单位秒*/
+  /** 时长   单位秒*/
   time: number;
 }
 
-/**文件上传（新）方法   音频参数 */
+/** 文件上传（新）方法   音频参数 */
 
 interface fuAudio {
-  /**时长   单位秒*/
+  /** 时长   单位秒*/
   time: number;
 }
 
-/**文件上传（新）方法   视频参数 */
+/** 文件上传（新）方法   视频参数 */
 
 interface fuFile {
-  /**KB大小*/
+  /** KB大小*/
   size: number;
 }
 
-/**自定义参数模式 */
+/** 自定义参数模式 */
 
 interface customParam {
   [propName: string]: any;
 }
 
-/**
+declare const Swiper: any;
 
+/**
 
  * 调用原生APP的功能库
  */
 declare const ZWY_CLOUD: {
   /**
+   ** app中打开链接到手机默认浏览器
+   ** params object
+   ** url：跳转地址
+   **/
+  OpenSystemWeb(params: { url: string }): void;
 
-
-   * 无回调获取登录信息
+  /* 无回调获取登录信息
    * @param 无
    * @response {obj}
    */
   getUserInfo(): {
-    /**用户token*/
+    /** 用户token*/
     token: string;
 
-    /**用户sessionId*/
+    /** 用户sessionId*/
     sessionId: string;
 
-    /**用户手机号码*/
+    /** 用户手机号码*/
     phone: string;
   };
   /**
-
 
    * 获取登录信息
    * @params {object} params 参数
    */
   appSessionToken(params: {
-    /**登录方式 0：不需要登录，1：需要登录，2：需要登录（只能用手机号码登录）*/
+    /** 登录方式 0：不需要登录，1：需要登录，2：需要登录（只能用手机号码登录）*/
     loginType: number;
 
-    /**回调函数名  参数 string：{token:'',sessionId:'',phone:''}*/
+    /** 回调函数名  参数 string：{token:'',sessionId:'',phone:''}*/
     callback: string;
   }): void;
   /**
-
 
    * 调用强制登录
    * @params {object} params 参数
    */
   appForceToken(params: {
-    /**登录方式 1：需要登录，2：需要登录（只能用手机号码登录）*/
+    /** 登录方式 1：需要登录，2：需要登录（只能用手机号码登录）*/
     loginType: number;
 
-    /**回调函数名  参数 string：{token:'',sessionId:'',phone:''}*/
+    /** 回调函数名  参数 string：{token:'',sessionId:'',phone:''}*/
     callback: string;
   }): void;
   /**
-
 
    * 分享
    * @params {object} params 参数
    */
   share(params: {
-    /**分享标题  必传*/
+    /** 分享标题  必传*/
     title: string;
 
-    /**分享内容  必传*/
+    /** 分享内容  必传*/
     content: string;
 
-    /**分享图标  必传*/
+    /** 分享图标  必传*/
     icon: string;
 
-    /**分享地址  必传*/
+    /** 分享地址  必传*/
     url: string;
 
-    /**业务类型  必传*/
+    /** 业务类型  必传*/
     sourceType: number;
 
-    /**分享失败调用函数*/
+    /** 分享失败调用函数*/
     error?: string;
 
-    /**分享成功回调函数*/
+    /** 分享成功回调函数*/
     success?: string;
   }): void;
   /**
-
 
    * 图片放大预览
    * @params {object} params 参数
    */
   viewImageContent(params: {
-    /**图片数组 */
+    /** 图片数组 */
     array: vicArray[];
 
-    /**初始预览编号 0:第一张 */
+    /** 初始预览编号 0:第一张 */
     index: number;
   }): void;
   /**
-
 
    * 原生消息提示(一段时间后自动消失)
    * @param {object} params 参数
    */
   appShowMessage(params: {
-    /**提示消息*/
+    /** 提示消息*/
     message: string;
 
-    /**消息显示时间*/
+    /** 消息显示时间*/
     time: number;
   }): void;
   /**
-
 
    * 原生消息提示(点击确定按钮消失)
    * @param {object} params 参数
    */
   appAlert(params: {
-    /**消息提示内容 */
+    /** 消息提示内容 */
     message: string;
   }): void;
   /**
-
 
    * 原生确认消息框
    * @param {object} params 参数
    */
   appConfirm(params: {
-    /**提示标题，非必传,app判断空时默认为”提示” */
+    /** 提示标题，非必传,app判断空时默认为”提示” */
     title: string;
 
-    /**提示消息，必传 */
+    /** 提示消息，必传 */
     msg: string;
 
-    /**点击确认执行方法 为空时不调用 */
+    /** 点击确认执行方法 为空时不调用 */
     callback: string;
   }): void;
   /**
-
 
    * 打开原生webview
    * @param {object} params 参数
@@ -239,7 +236,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 获取经纬度
    * @param {object} params 参数
    */
@@ -249,7 +245,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 获取定位信息（新） 暂时不能用
    * @param {object} params 参数
    */
@@ -258,7 +253,6 @@ declare const ZWY_CLOUD: {
     callback: string;
   }): void;
   /**
-
 
    * 打开原生图片上传页面
    * @param {object} params 参数
@@ -272,7 +266,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 打开原生视频上传页面
    * @param {object} params 参数
    */
@@ -285,7 +278,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 获取微信登录授权信息
    * @param {object} params 参数
    */
@@ -294,7 +286,6 @@ declare const ZWY_CLOUD: {
     callback: string;
   }): void;
   /**
-
 
    * 调用原生二维码扫描
    * @param {object} params 参数
@@ -305,7 +296,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 调用原生收货地址
    * @param {object} params 参数
    */
@@ -315,7 +305,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 调用原生收货地址
    * @param {object} params 参数
    */
@@ -324,7 +313,6 @@ declare const ZWY_CLOUD: {
     callback: string;
   }): void;
   /**
-
 
    * 调用原生导航页面
    * @param {object} params 参数
@@ -344,7 +332,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 展示积分增加动画
    * @param {object} params 参数
    */
@@ -357,13 +344,11 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 打开原生wifi页面
    * @param {object} params 参数
    */
   openSettingWifi(): void;
   /**
-
 
    * 文件上传（新）  还未启用
    * @param {object} params 参数
@@ -387,7 +372,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 打开原生页面
    * @param {object} params 参数
    */
@@ -402,7 +386,6 @@ declare const ZWY_CLOUD: {
     par: customParam;
   }): void;
   /**
-
 
    * 打开原生页面
    * @param {object} params 参数
@@ -419,7 +402,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 查看单条直播新闻全部评论
    * @param {object} params 参数
    */
@@ -434,7 +416,6 @@ declare const ZWY_CLOUD: {
     callBackFun: string;
   }): void;
   /**
-
 
    * 配置顶部导航栏
    * @param {object} params 参数
@@ -454,7 +435,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 配置底部导航栏
    * @param {object} params 参数
    */
@@ -473,15 +453,13 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 无回调获取网络状态信息
    * @param {object} params 参数
    */
-  /**0：网络不可用； 1:2G; 2:3G; 3:4G; 4:wifi*/
+  /** 0：网络不可用； 1:2G; 2:3G; 3:4G; 4:wifi*/
   getNetworkType(): string | number;
 
   /**
-
 
    * 配置底部导航栏
    * @param {object} params 参数
@@ -498,7 +476,6 @@ declare const ZWY_CLOUD: {
   }): void;
   /**
 
-
    * 判断否则在app内打开
    * @param {object} params 参数
    */
@@ -507,7 +484,6 @@ declare const ZWY_CLOUD: {
 
   /**
 
-
    * 判断设备操作系统
    * @param {object} params 参数
    */
@@ -515,7 +491,6 @@ declare const ZWY_CLOUD: {
   getOS(): string;
 
   /**
-
 
    * 判断app内webview版本号
    * @param version 参数
